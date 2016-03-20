@@ -14,9 +14,15 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+# from polls import urls as polls_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^polls/', include('polls.urls')),  # 将polls应用的url转发规则注册到start_django工程来
+    # url(r'^polls/', include(polls_urls)),  # 两种方式均可,本方式需要将目标urls配置import进来
 ]
+
+
+
